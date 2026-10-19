@@ -1,5 +1,5 @@
 models:
-  - name: int_responses
+  - name: int_responses_deduped
     description: "Learners final responses to their assessment questions. Grain: one record per session_id / question_id"
     data_tests:
       - dbt_utils.unique_combination_of_columns:
@@ -21,6 +21,10 @@ models:
         description: "FK, connects to Courses. Part of 2-column imposed compound PK"
         data_tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_courses')
+                field: question_id
       - name: is_correct
         description: "True / False"
         data_type: boolean
