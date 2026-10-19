@@ -11,12 +11,14 @@ WITH responses AS (
 SELECT responses.response_id
     , responses.pupil_id
     , responses.session_id
+    , responses.subject_name
     , responses.question_id
     , responses.is_correct
     , responses.is_no_attempt
     , responses.seconds_taken
     , responses.question_number
     , responses.answered_at
+    , assessments.assessment_id
     , assessments.is_complete
     , assessments.year_group_at_sitting
     , assessments.total_questions
