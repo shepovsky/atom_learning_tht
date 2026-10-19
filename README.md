@@ -5,6 +5,9 @@ Build a reproducible dbt pipeline in BigQuery that calculates an estimated SATs 
 
 ## Source Data analysis
 
+Tables structure:
+https://docs.google.com/spreadsheets/d/12G7UEF7GQKHJTWogrSptlmKGLoS0X0CNgbkRyBkNQAQ/edit?usp=sharing
+
 ### Issues and proposed solutions:
 
 1. **Duplicate responses**
