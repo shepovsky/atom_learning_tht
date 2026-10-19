@@ -4,8 +4,55 @@ sources:
     schema: de_raw
     tables:
       - name: responses
+        columns:
+          - name: session_id
+            data_tests:
+              - not_null
+          - name: question_id
+            data_tests:
+              - not_null
+          - name: is_correct
+            data_tests:
+              - not_null
+      
       - name: assessments
         identifier: assessment_sittings
+        columns:
+          - name: session_id
+            data_tests:
+              - not_null
+              - unique
+          - name: pupil_id
+            data_tests:
+              - not_null
+          - name: total_questions
+            data_tests:
+              - not_null
+          - name: is_complete
+            data_tests:
+              - not_null
+      
       - name: pupils
+        columns:
+          - name: pupil_id
+            data_tests:
+              - unique
+      
       - name: courses
         identifier: course_hierarchy
+        columns:
+          - name: question_id
+            data_tests:
+              - unique
+          - name: subject_name
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values:
+                      - "English"
+                      - "Maths"
+                      - "Non-Verbal Reasoning"
+                      - "Science"
+                      - "Screeners"
+                      - "Verbal Reasoning"
+                      - "Wellbeing"
