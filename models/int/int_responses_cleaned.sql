@@ -5,7 +5,7 @@ WITH responses AS (
 
 , assessments AS (
     SELECT *
-    FROM {{ ref('stg_assessments') }}
+    FROM {{ ref('int_assessments_complete') }}
 )
 
 SELECT responses.response_id
@@ -22,7 +22,6 @@ SELECT responses.response_id
     , assessments.total_questions
     , assessments.started_at
     , assessments.finished_at
+    , assessments.sats_year
 FROM responses
 INNER JOIN assessments ON responses.session_id = assessments.session_id
-WHERE assessments.finished_at IS NOT NULL
-AND assessments.is_complete = true

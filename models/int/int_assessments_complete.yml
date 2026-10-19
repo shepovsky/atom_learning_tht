@@ -1,0 +1,26 @@
+models:
+  - name: int_assessments_complete
+    description: "cleaned version of assessment_settings; excludes incomplete sessions and has sats_year field used for SATs score calculation"
+    columns:
+      - name: session_id
+        data_tests:
+          - not_null
+          - unique
+      - name: pupil_id
+        data_tests:
+          - not_null
+      - name: total_questions
+        data_tests:
+          - not_null
+      - name: is_complete
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [true]
+              quote: false
+      - name: sats_year
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [2025, 2026]
+              quote: false

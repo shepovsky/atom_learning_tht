@@ -11,7 +11,7 @@ SELECT session_id
     , is_complete
     , started_at
     , finished_at
-    , {{ get_sats_year('finished_at') }} AS sats_years
+    , {{ get_sats_year('finished_at') }} AS sats_year
 FROM assessments
 WHERE assessments.finished_at IS NOT NULL
 AND assessments.is_complete = true
