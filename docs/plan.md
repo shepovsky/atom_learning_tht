@@ -1,0 +1,17 @@
+- Check access to BigQuery
+- Create project infrastructure:
+  - Dedicated folder
+  - Git
+  - GitHub repository
+  - Python virtual env
+  - Dbt core with bigquery connector
+  - Test connection between the VS Code's terminal, Git, GitHub and BigQuery
+- Research the SAL and KS2 scoring conversions
+  - get a CSV conversion file
+- Data discovery
+  - Analyse the four tables inside in BigQuery
+  - get source tables diagramme
+  - understand:
+      - rules which assessment attempts count
+      - how responses should be aggregated
+      - how official conversion tables apply to the mock assessments
