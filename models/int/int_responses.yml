@@ -1,0 +1,38 @@
+models:
+  - name: int_responses
+    description: "Learners final responses to their assessment questions. Grain: one record per session_id / question_id"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - session_id
+              - question_id
+    columns:
+      - name: response_id
+        description: "PK, but is often the only unique value in the whole record. Preference given to session_id / question_id combination"
+      - name: pupil_id
+      - name: session_id
+        description: "FK, connects to Assessments. Part of 2-column imposed compound PK"
+        data_tests:
+          - not_null
+      - name: session_type
+        description: "not useful, contains MOCK_TEST value throughout"
+      - name: question_id
+        description: "FK, connects to Courses. Part of 2-column imposed compound PK"
+        data_tests:
+          - not_null
+      - name: is_correct
+        description: "True / False"
+        data_type: boolean
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+              quote: false
+      - name: is_no_attempt
+        description: "true / false; when true, then is_correct = false"
+        data_type: boolean
+      - name: seconds_taken
+      - name: question_number
+      - name: answered_at
